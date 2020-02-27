@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Button, TouchableOpacity, Image } from 'react-native';
 
 const HomeDetail = ({ navigation }) => {
   return (
@@ -8,7 +8,19 @@ const HomeDetail = ({ navigation }) => {
       <Button title='Go to Home' onPress={() => navigation.goBack()} />
     </View>
   );
-}
+};
+
+export const screenOptions = ({ navigation }) => {
+  return {
+    headerLeft: () => (
+      <TouchableOpacity
+        onPress={() => navigation.openDrawer()}
+      >
+        <Image source={require('../assets/menu.png')} style={{ width: 20, height: 20, marginLeft: 10 }} />
+      </TouchableOpacity>
+    ),
+  }
+};
 
 const styles = StyleSheet.create({
   screen: {
