@@ -16,7 +16,7 @@ export const screenOptions = ({ navigation }) => {
       <TouchableOpacity
         onPress={() => navigation.openDrawer()}
       >
-        <Image source={require('../assets/menu.png')} style={{ width: 20, height: 20, marginLeft: 10 }} />
+        <Image source={require('../assets/images/menu.png')} style={{ width: 20, height: 20, marginLeft: 10 }} />
       </TouchableOpacity>
     ),
   }

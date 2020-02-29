@@ -4,8 +4,8 @@ import { StyleSheet, View, Text, Button } from 'react-native';
 const ProfileDetail = ({ navigation }) => {
   return (
     <View style={styles.screen}>
-      <Text>SettingsDetail</Text>
-      <Button title='Go to Profile' onPress={() => navigation.goBack()} />
+      <Text>Prifile Edit</Text>
+      <Button title='Go to Profile' onPress={() => navigation.replace('Profile')} />
     </View>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Button, TouchableOpacity, Image } from 'react-native';
 
 const Profile = ({ navigation }) => {
   return (
@@ -8,7 +8,26 @@ const Profile = ({ navigation }) => {
       <Button title='Go to Profile Edit' onPress={() => navigation.navigate('ProfileDetail')} />
     </View>
   );
-}
+};
+
+export const screenOptions = ({ navigation }) => {
+  return {
+    headerLeft: () => (
+      <TouchableOpacity
+        onPress={() => navigation.openDrawer()}
+      >
+        <Image source={require('../assets/images/menu.png')} style={{ width: 20, height: 20, marginLeft: 10 }} />
+      </TouchableOpacity>
+    ),
+    headerRight: () => (
+      <TouchableOpacity
+        onPress={() => navigation.replace('ProfileDetail')}
+      >
+        <Image source={require('../assets/images/edit.png')} style={{ width: 20, height: 20, marginRight: 10 }} />
+      </TouchableOpacity>
+    ),
+  }
+};
 
 const styles = StyleSheet.create({
   screen: {

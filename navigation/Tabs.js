@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { HomeStack, ProfileStack } from './Stacks';
+import { HomeStack, ProfileStack, OrderStack } from './Stacks';
 
 const Tab = createBottomTabNavigator();
 
-export const TabNavigator = () => {
+export const mainTabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -15,12 +15,12 @@ export const TabNavigator = () => {
 
           if (route.name === 'Home') {
             iconName = focused
-              ? require('../assets/home-black.png')
-              : require('../assets/home.png');
+              ? require('../assets/images/home-black.png')
+              : require('../assets/images/home.png');
           } else if (route.name === 'Profile') {
             iconName = focused ?
-              require('../assets/profile-black.png')
-              : require('../assets/profile.png');
+              require('../assets/images/profile-black.png')
+              : require('../assets/images/profile.png');
           }
 
           return <Image source={iconName} style={{ width: 20, height: 20 }} resizeMode='contain' />;
