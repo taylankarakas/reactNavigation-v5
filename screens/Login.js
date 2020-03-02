@@ -1,25 +1,35 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { TextInput, Button, Icon, Text } from '@shoutem/ui';
+import { StyleSheet, View, TextInput, Keyboard, TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native';
+import { Button, Text, TouchableOpacity } from '@shoutem/ui';
 
 const Login = ({ navigation }) => {
   return (
-    <View style={styles.screen}>
-      <TextInput
-        style={styles.input}
-        placeholder={'Email'}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder={'Password'}
-      />
-      <Button
-        styleName="secondary"
-        style={styles.loginButton}
-      >
-        <Text>LOGIN</Text>
-      </Button>
-    </View>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.screen}>
+        <TextInput
+          style={styles.input}
+          placeholder={'Email'}
+          keyboardType='email-address'
+        />
+        <TextInput
+          style={styles.input}
+          placeholder={'Password'}
+          keyboardType='numeric'
+          secureTextEntry
+        />
+        <Button
+          styleName="secondary"
+          style={styles.loginButton}
+        >
+          <Text>LOGIN</Text>
+        </Button>
+        <View>
+          <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+            <Text>Register?</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -41,11 +51,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     width: '80%',
+    height: 50,
     marginBottom: 20,
     borderRadius: 30,
+    backgroundColor: '#fff',
+    paddingHorizontal: 20,
   },
   loginButton: {
     width: '40%',
+    marginBottom: 10,
   },
 });
 

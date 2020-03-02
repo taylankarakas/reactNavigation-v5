@@ -16,7 +16,10 @@ export const screenOptions = ({ navigation }) => {
       <TouchableOpacity
         onPress={() => navigation.goBack()}
       >
-        <Image source={require('../assets/images/back.png')} style={{ width: 20, height: 20, marginLeft: 10 }} />
+        <Image
+          source={require('../assets/images/back.png')}
+          style={{ width: 20, height: 20, marginLeft: 10 }}
+        />
       </TouchableOpacity>
     ),
   }

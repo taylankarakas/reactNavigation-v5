@@ -21,6 +21,10 @@ export const mainTabNavigator = () => {
             iconName = focused ?
               require('../assets/images/profile-black.png')
               : require('../assets/images/profile.png');
+          } else if (route.name === 'Orders') {
+            iconName = focused ?
+              require('../assets/images/order-black.png')
+              : require('../assets/images/order.png');
           }
 
           return <Image source={iconName} style={{ width: 20, height: 20 }} resizeMode='contain' />;
@@ -31,6 +35,7 @@ export const mainTabNavigator = () => {
       }}
     >
       <Tab.Screen name="Home" component={HomeStack} />
+      <Tab.Screen name="Orders" component={OrderStack} />
       <Tab.Screen name="Profile" component={ProfileStack} />
     </Tab.Navigator>
   );

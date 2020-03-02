@@ -5,7 +5,6 @@ const Profile = ({ navigation }) => {
   return (
     <View style={styles.screen}>
       <Text>Profile</Text>
-      <Button title='Go to Profile Edit' onPress={() => navigation.navigate('ProfileDetail')} />
     </View>
   );
 };

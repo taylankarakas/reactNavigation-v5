@@ -9,7 +9,9 @@ import ProfileDetail from '../screens/ProfileDetail';
 import Orders from '../screens/Orders';
 import OrderDetail from '../screens/OrderDetail';
 import Login, { screenOptions as loginScreenOptions } from '../screens/Login';
-import Register from '../screens/Register';
+import Register, { screenOptions as registerScreenOptions } from '../screens/Register';
+import Notifications, { screenOptions as notificationScreenOptions } from '../screens/Notifications';
+import NotificationDetail, { screenOptions as notificationDetailScreenOptions } from '../screens/NotificationDetail';
 
 const Stack = createStackNavigator();
 
@@ -22,8 +24,16 @@ const defaultNavOptions = {
 export const HomeStack = () => {
   return (
     <Stack.Navigator initialRouteName={Home} screenOptions={defaultNavOptions}>
-      <Stack.Screen name="Home" component={Home} options={homeScreenOptions} />
-      <Stack.Screen name="HomeDetail" component={HomeDetail} options={homeDetailScreenOptions} />
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={homeScreenOptions}
+      />
+      <Stack.Screen
+        name="HomeDetail"
+        component={HomeDetail}
+        options={homeDetailScreenOptions}
+      />
     </Stack.Navigator>
   );
 };
@@ -31,7 +41,11 @@ export const HomeStack = () => {
 export const ProfileStack = () => {
   return (
     <Stack.Navigator initialRouteName={Profile} screenOptions={defaultNavOptions}>
-      <Stack.Screen name="Profile" component={Profile} options={profileScreenOptions} />
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={profileScreenOptions}
+      />
       <Stack.Screen name="ProfileDetail" component={ProfileDetail} />
     </Stack.Navigator>
   );
@@ -46,11 +60,36 @@ export const OrderStack = () => {
   );
 };
 
+export const NotificationStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name='Notifications'
+        component={Notifications}
+        options={notificationScreenOptions}
+      />
+      <Stack.Screen
+        name='NotificationDetail'
+        component={NotificationDetail}
+        options={notificationDetailScreenOptions}
+      />
+    </Stack.Navigator>
+  );
+};
+
 export const LoginStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='Login' component={Login} options={loginScreenOptions} />
-      <Stack.Screen name='Register' component={Register} />
+      <Stack.Screen
+        name='Login'
+        component={Login}
+        options={loginScreenOptions}
+      />
+      <Stack.Screen
+        name='Register'
+        component={Register}
+        options={registerScreenOptions}
+      />
     </Stack.Navigator>
   );
 };
