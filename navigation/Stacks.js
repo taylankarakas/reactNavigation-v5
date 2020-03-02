@@ -6,7 +6,7 @@ import Home, { screenOptions as homeScreenOptions } from '../screens/Home';
 import HomeDetail, { screenOptions as homeDetailScreenOptions } from '../screens/HomeDetail';
 import Profile, { screenOptions as profileScreenOptions } from '../screens/Profile';
 import ProfileDetail from '../screens/ProfileDetail';
-import Orders from '../screens/Orders';
+import Orders, { screenOptions as ordersScreenOptions } from '../screens/Orders';
 import OrderDetail from '../screens/OrderDetail';
 import Login, { screenOptions as loginScreenOptions } from '../screens/Login';
 import Register, { screenOptions as registerScreenOptions } from '../screens/Register';
@@ -54,7 +54,7 @@ export const ProfileStack = () => {
 export const OrderStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='Orders' component={Orders} />
+      <Stack.Screen name='Orders' component={Orders} options={ordersScreenOptions} />
       <Stack.Screen name='OrderDetail' component={OrderDetail} />
     </Stack.Navigator>
   );

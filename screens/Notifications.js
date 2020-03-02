@@ -1,11 +1,26 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, Button, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { Row, Subtitle, Caption, View, Image } from '@shoutem/ui';
 
 const Notifications = ({ navigation }) => {
   return (
     <View style={styles.screen}>
-      <Text>Notifications</Text>
-      <Button title='Go to Notification Detail' onPress={() => navigation.navigate('NotificationDetail')} />
+      <View>
+        <TouchableWithoutFeedback
+          onPress={() => navigation.navigate('NotificationDetail', { title: 'Notification 1' })}
+        >
+          <Row>
+            <Image
+              styleName="small rounded-corners"
+              source={{ uri: 'https://shoutem.github.io/img/ui-toolkit/examples/image-6.png' }}
+            />
+            <View styleName="vertical stretch space-between">
+              <Subtitle>Notification 1</Subtitle>
+              <Caption>20 hours ago</Caption>
+            </View>
+          </Row>
+        </TouchableWithoutFeedback>
+      </View>
     </View>
   );
 };
@@ -27,9 +42,8 @@ export const screenOptions = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   screen: {
+    padding: 10,
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
 

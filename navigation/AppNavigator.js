@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Image, View, Text, SafeAreaView, TouchableOpacity, Button } from 'react-native';
+import { View, Text, SafeAreaView, TouchableOpacity, Button } from 'react-native';
+import { Image } from '@shoutem/ui';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator, DrawerItemList } from '@react-navigation/drawer';
@@ -24,7 +25,7 @@ const drawerContent = props => {
 
       <View style={{ alignItems: 'center', justifyContent: 'space-between', marginTop: 50, flexDirection: 'column', minHeight: '35%', height: '50%' }}>
         <View>
-          <Image source={require('../assets/images/account.png')} />
+          <Image styleName="medium-avatar" source={require('../assets/images/profile-photo.jpg')} />
           <Text>Atil Taylan Karakas</Text>
         </View>
         <View>
