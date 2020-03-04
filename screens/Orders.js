@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Button, TouchableOpacity, Image } from 'react-native';
+import HeaderIcon from '../components/HeaderIcon';
 
 const Orders = ({ navigation }) => {
   return (
@@ -15,10 +16,7 @@ export const screenOptions = ({ navigation }) => {
     headerLeft: () => {
       return (
         <TouchableOpacity onPress={() => navigation.openDrawer()}>
-          <Image
-            source={require('../assets/images/menu.png')}
-            style={{ width: 20, height: 20, marginLeft: 10 }}
-          />
+          <HeaderIcon source={require('../assets/images/menu.png')} />
         </TouchableOpacity>
       );
     }

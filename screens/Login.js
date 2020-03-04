@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Keyboard, TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, View, TextInput, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { Button, Text, TouchableOpacity } from '@shoutem/ui';
+
+import CustomButton from '../components/Button';
 
 const Login = ({ navigation }) => {
   return (
@@ -17,12 +19,13 @@ const Login = ({ navigation }) => {
           keyboardType='numeric'
           secureTextEntry
         />
-        <Button
+        {/* <Button
           styleName="secondary"
           style={styles.loginButton}
         >
           <Text>LOGIN</Text>
-        </Button>
+        </Button> */}
+        <CustomButton style={styles.loginButton} title='LOGIN' />
         <View>
           <TouchableOpacity onPress={() => navigation.navigate('Register')}>
             <Text>Register?</Text>
@@ -58,8 +61,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   loginButton: {
-    width: '40%',
     marginBottom: 10,
+    backgroundColor: '#fff'
   },
 });
 

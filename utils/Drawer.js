@@ -3,6 +3,9 @@ import { View, Text, SafeAreaView, TouchableOpacity, Button, StyleSheet, Platfor
 import { Image } from '@shoutem/ui';
 import { DrawerItemList } from '@react-navigation/drawer';
 
+import HeaderIcon from '../components/HeaderIcon';
+import CustomButton from '../components/Button';
+
 // Drawer content
 export const drawerContent = props => {
   return (
@@ -13,21 +16,31 @@ export const drawerContent = props => {
         style={styles.closeButtonWrapper}
         onPress={() => props.navigation.closeDrawer()}
       >
-        <Image source={require('../assets/images/close.png')} style={{ width: 25, height: 25 }} />
+        <HeaderIcon
+          source={require('../assets/images/close.png')}
+          style={{ marginLeft: 0 }}
+        />
       </TouchableOpacity>
 
       <View style={styles.drawerContentWrapper}>
-        <TouchableOpacity activeOpacity={0.8} onPress={() => props.navigation.navigate('Profile')}>
-          <Image styleName="medium-avatar" source={require('../assets/images/profile-photo.jpg')} />
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => props.navigation.navigate('Profile')}
+        >
+          <Image
+            styleName="medium-avatar"
+            source={require('../assets/images/profile-photo.jpg')}
+          />
           <Text style={styles.userName}>Atil Taylan Karakas</Text>
         </TouchableOpacity>
         <View>
           <DrawerItemList {...props} />
         </View>
       </View>
-      <View style={styles.logoutButton}>
+      {/* <View style={styles.logoutButton}>
         <Button title='log out' />
-      </View>
+      </View> */}
+      <CustomButton title='Logout' style={styles.logoutButton} />
     </SafeAreaView>
   );
 };
@@ -60,8 +73,6 @@ const styles = StyleSheet.create({
     marginTop: 20
   },
   logoutButton: {
-    borderRadius: 20,
-    width: 150,
-    marginTop: 100
+    marginTop: 100,
   },
 });
