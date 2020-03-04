@@ -11,7 +11,7 @@ export const mainTabNavigator = () => {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused }) => {
-          let iconName, dimensions;
+          let imgSource, dimensions;
 
           switch (route.name) {
 
@@ -19,16 +19,21 @@ export const mainTabNavigator = () => {
               dimensions = focused
                 ? { width: 25, height: 25 }
                 : { width: 20, height: 20 }
-              return <Image styleName="small-avatar" style={dimensions} source={require('../assets/images/profile-photo.jpg')} />
+              return (
+                <Image
+                  styleName="small-avatar"
+                  style={dimensions} source={require('../assets/images/profile-photo.jpg')}
+                />
+              );
 
             case 'Home':
-              iconName = focused
+              imgSource = focused
                 ? require('../assets/images/home-black.png')
                 : require('../assets/images/home.png');
               break;
 
             case 'Orders':
-              iconName = focused
+              imgSource = focused
                 ? require('../assets/images/order-black.png')
                 : require('../assets/images/order.png');
               break;
@@ -36,23 +41,7 @@ export const mainTabNavigator = () => {
             default:
               break;
           }
-          return <Image source={iconName} style={{ width: 20, height: 20 }} resizeMode='contain' />;
-
-          // if (route.name === 'Home') {
-          //   iconName = focused
-          //     ? require('../assets/images/home-black.png')
-          //     : require('../assets/images/home.png');
-          // } else if (route.name === 'Profile') {
-          //   dimensions = focused
-          //     ? { width: 25, height: 25 }
-          //     : { width: 20, height: 20 }
-          //   return <Image styleName="small-avatar" style={dimensions} source={require('../assets/images/profile-photo.jpg')} />
-          // } else if (route.name === 'Orders') {
-          //   iconName = focused ?
-          //     require('../assets/images/order-black.png')
-          //     : require('../assets/images/order.png');
-          // }
-
+          return <Image source={imgSource} style={{ width: 20, height: 20 }} resizeMode='contain' />;
         },
       })}
       tabBarOptions={{

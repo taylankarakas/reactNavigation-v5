@@ -19,6 +19,7 @@ const defaultNavOptions = {
   headerStyle: {
     backgroundColor: Platform.OS === 'android' ? 'purple' : 'white',
   },
+  headerTintColor: Platform.OS === 'android' ? '#fff' : '#000',
 };
 
 export const HomeStack = () => {
