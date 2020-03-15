@@ -1,10 +1,16 @@
 import React from 'react';
 import { StyleSheet, View, TextInput, Keyboard, TouchableWithoutFeedback } from 'react-native';
-import { Button, Text, TouchableOpacity } from '@shoutem/ui';
+import { Text, TouchableOpacity } from '@shoutem/ui';
+import { connect } from 'react-redux';
 
 import CustomButton from '../components/Button';
+import { isLogin } from '../actions';
 
-const Login = ({ navigation }) => {
+const loginHandler = (beLogin) => {
+  beLogin(true)
+};
+
+const Login = ({ navigation, login, beLogin }) => {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.screen}>
@@ -25,10 +31,11 @@ const Login = ({ navigation }) => {
         >
           <Text>LOGIN</Text>
         </Button> */}
-        <CustomButton style={styles.loginButton} title='LOGIN' />
+        <CustomButton style={styles.loginButton} title='LOGIN' onPress={() => loginHandler(beLogin)} />
         <View>
           <TouchableOpacity onPress={() => navigation.navigate('Register')}>
             <Text>Register?</Text>
+            {console.log('props =>', login)}
           </TouchableOpacity>
         </View>
       </View>
@@ -38,7 +45,7 @@ const Login = ({ navigation }) => {
 
 export const screenOptions = () => {
   return {
-    headerShown: false
+    headerShown: false,
   };
 };
 
@@ -66,4 +73,15 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+const mapStateToProps = state => {
+  console.log('-->', state)
+  return {
+    login: state.LoginReducer.isLogin
+  };
+};
+
+const mapDispatchToProps = {
+  beLogin: isLogin
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

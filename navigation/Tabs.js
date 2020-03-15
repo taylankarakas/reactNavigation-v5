@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Image } from '@shoutem/ui';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { HomeStack, ProfileStack, OrderStack } from './Stacks';
+import { HomeStack, ProfileStack, OrderStack, BasketStack } from './Stacks';
 
 const Tab = createBottomTabNavigator();
 
@@ -38,6 +38,11 @@ export const mainTabNavigator = () => {
                 : require('../assets/images/order.png');
               break;
 
+            case 'Basket':
+              imgSource = focused
+                ? require('../assets/images/basket.png')
+                : require('../assets/images/basket-black.png');
+              break;
             default:
               break;
           }
@@ -45,11 +50,14 @@ export const mainTabNavigator = () => {
         },
       })}
       tabBarOptions={{
-        activeTintColor: 'black',
+        // activeTintColor: '#000',
+        // inactiveTintColor: 'red',
+        showLabel: false,
       }}
     >
       <Tab.Screen name="Home" component={HomeStack} />
       <Tab.Screen name="Orders" component={OrderStack} />
+      <Tab.Screen name="Basket" component={BasketStack} />
       <Tab.Screen name="Profile" component={ProfileStack} />
     </Tab.Navigator >
   );

@@ -42,7 +42,7 @@ export const screenOptions = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   screen: {
-    padding: 10,
+    padding: 15,
     flex: 1,
   },
 });

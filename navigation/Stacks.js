@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Image, TouchableOpacity, Platform } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { Platform, Easing } from 'react-native';
+import { createStackNavigator, TransitionPresets, CardStyleInterpolators } from '@react-navigation/stack';
 
 import Home, { screenOptions as homeScreenOptions } from '../screens/Home';
 import HomeDetail, { screenOptions as homeDetailScreenOptions } from '../screens/HomeDetail';
@@ -12,21 +12,45 @@ import Login, { screenOptions as loginScreenOptions } from '../screens/Login';
 import Register, { screenOptions as registerScreenOptions } from '../screens/Register';
 import Notifications, { screenOptions as notificationScreenOptions } from '../screens/Notifications';
 import NotificationDetail, { screenOptions as notificationDetailScreenOptions } from '../screens/NotificationDetail';
+import Basket from '../screens/Basket';
 
 const Stack = createStackNavigator();
+
+const config = {
+  animation: 'spring',
+  config: {
+    stiffness: 1000,
+    damping: 40,
+    mass: 3,
+    overshootClamping: false,
+    restDisplacementThreshold: 0.01,
+    restSpeedThreshold: 0.01,
+    easing: Easing.linear
+  },
+};
+
+const closeConfig = {
+  animation: 'timing',
+  duration: 500,
+  easing: Easing.linear
+}
 
 const defaultNavOptions = {
   headerStyle: {
     backgroundColor: Platform.OS === 'android' ? 'purple' : 'white',
   },
   headerTintColor: Platform.OS === 'android' ? '#fff' : '#000',
+  // ...TransitionPresets.FadeFromBottomAndroid,
+  cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+  transitionSpec: { open: config, close: closeConfig },
+  gesturesEnabled: true
 };
 
 export const HomeStack = () => {
   return (
     <Stack.Navigator initialRouteName={Home} screenOptions={defaultNavOptions}>
       <Stack.Screen
-        name="Home"
+        name="Categories"
         component={Home}
         options={homeScreenOptions}
       />
@@ -78,6 +102,14 @@ export const NotificationStack = () => {
   );
 };
 
+export const BasketStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name='Basket' component={Basket} />
+    </Stack.Navigator>
+  );
+};
+
 export const LoginStack = () => {
   return (
     <Stack.Navigator>
@@ -91,6 +123,7 @@ export const LoginStack = () => {
         component={Register}
         options={registerScreenOptions}
       />
+      <Stack.Screen name='test' component={HomeStack} />
     </Stack.Navigator>
   );
 };

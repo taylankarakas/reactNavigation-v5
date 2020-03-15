@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import RootReducer from './reducers';
+import thunk from 'redux-thunk';
 
-import { AppNavigator } from './navigation/AppNavigator';
+import AppNavigator from './navigation/AppNavigator';
 
 const fontLoader = () => {
   return Font.loadAsync({
@@ -20,6 +24,11 @@ const fontLoader = () => {
   });
 };
 
+const store = createStore(
+  RootReducer,
+  applyMiddleware(thunk)
+);
+
 export default function App() {
   const [isReady, setIsReady] = useState(false)
 
@@ -34,6 +43,9 @@ export default function App() {
   }
 
   return (
-    <AppNavigator />
+    <Provider store={store}>
+      {console.log('store =>', store.getState())}
+      <AppNavigator />
+    </Provider>
   );
 }

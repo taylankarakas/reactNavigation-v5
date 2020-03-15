@@ -1,22 +1,20 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 
 import { NavigationContainer } from '@react-navigation/native';
 
 import { LoginStack } from './Stacks';
-import { DrawerNavigator } from './Drawer';
+import DrawerNavigator from './Drawer';
 
-export const AppNavigator = () => {
-  const isLogin = true;
-  if (!isLogin) {
-    return (
-      <NavigationContainer>
-        <LoginStack />
-      </NavigationContainer>
-    );
-  }
+const AppNavigator = () => {
+
+  const isLogin = useSelector(state => state.LoginReducer.isLogin)
+
   return (
     <NavigationContainer>
-      <DrawerNavigator />
+      {isLogin ? <DrawerNavigator /> : <LoginStack />}
     </NavigationContainer>
   );
 };
+
+export default AppNavigator;

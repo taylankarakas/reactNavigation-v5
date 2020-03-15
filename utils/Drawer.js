@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity, Button, StyleSheet, Platform } from 'react-native';
 import { Image } from '@shoutem/ui';
 import { DrawerItemList } from '@react-navigation/drawer';
+import { connect } from 'react-redux'
 
 import HeaderIcon from '../components/HeaderIcon';
 import CustomButton from '../components/Button';
